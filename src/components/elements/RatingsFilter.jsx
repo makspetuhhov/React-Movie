@@ -20,52 +20,46 @@ const RatingsFilter = () => {
     }
     fetchData();
   }, []);
-
-  const handleInputChange = (e) => {
+const handleInputChange = (e) => {
     setSelected(e.target.id);
   };
-  const filteredFiveStars = (
-    <MovieWall header={"Filtered Movies"} children>
-      {ratings.filter((movie) => movie.vote_average > 8)
+const filteredFiveStars = (
+<MovieWall header={"Filtered Movies"} children>
+{ratings.filter((movie) => movie.vote_average > 8)
 .map((movie) => (<><MovieCard clickable  image={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path: null} movieId={movie.id}movieName={movie.original_title}/></>))}
     </MovieWall>
   );
   const filteredFourStars = (
     <MovieWall header={"Filtered Movies"} children>
-      {ratings.filter((movie) => movie.vote_average <= 8 && movie.vote_average >= 6)
-        .map((movie) => (
-          <>
-            <MovieCard clickable image={ movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path: null  }
-              movieId={movie.id}
-              movieName={movie.original_title}/> </> ))}
-    </MovieWall>
+      {ratings.filter((movie) => movie.vote_average <= 8 && movie.vote_average >= 6).map((movie) => (
+<>
+<MovieCard clickable image={ movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path: null  }
+movieId={movie.id}
+movieName={movie.original_title}/> </> ))}
+</MovieWall>
   );
 
-  const filteredThreeStars = (
-    <MovieWall header={"Filtered Movies"} children>
-      {ratings
-        .filter((movie) => movie.vote_average <= 6 && movie.vote_average >= 4)
-        .map((movie) => ( <>
-            <MovieCard
-              clickable
-              image={ movie.poster_path? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : null  }
-              movieId={movie.id}
-              movieName={movie.original_title} /></>))}
-    </MovieWall>
+const filteredThreeStars = (
+<MovieWall header={"Filtered Movies"} children>
+{ratings.filter((movie) => movie.vote_average <= 6 && movie.vote_average >= 4).map((movie) => ( <>
+<MovieCard
+clickable
+image={ movie.poster_path? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : null  }
+movieId={movie.id}
+movieName={movie.original_title} /></>))}
+</MovieWall>
   );
 
-  const filteredTwoStars = (
-    <MovieWall header={"Filtered Movies"} children>
-      {ratings
-        .filter((movie) => movie.vote_average <= 4 && movie.vote_average >= 2)
-        .map((movie) => (
-          <>
-            <MovieCard
-              clickable
-              image={ movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : null }
-              movieId={movie.id}
-              movieName={movie.original_title}  /> </> ))}
-    </MovieWall>
+const filteredTwoStars = (
+<MovieWall header={"Filtered Movies"} children>
+{ratings.filter((movie) => movie.vote_average <= 4 && movie.vote_average >= 2).map((movie) => (
+ <>
+<MovieCard
+clickable
+image={ movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : null }
+ movieId={movie.id}
+movieName={movie.original_title}  /> </> ))}
+</MovieWall>
   );
 
   const filteredOneStar = (
@@ -74,13 +68,7 @@ const RatingsFilter = () => {
         .filter((movie) => movie.vote_average <= 2 && movie.vote_average >= 0)
         .map((movie) => (
           <>
-            <MovieCard
-              clickable
-              image={
-                movie.poster_path
-                  ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
-                  : null
-              }
+            <MovieCard clickable image={movie.poster_path? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : null}
               movieId={movie.id}
               movieName={movie.original_title}
             />
@@ -88,60 +76,23 @@ const RatingsFilter = () => {
         ))}
     </MovieWall>
   );
-
-  return (
-    <>
-      <StyledRatingsFilter>
-        <section className="star-wrapper">
-
-
+return (
+<>
+<StyledRatingsFilter>
+<section className="star-wrapper">
           <span className="star-group">
-            <input
-              onClick={handleInputChange}
-              type="radio"
-              id="rating-5"
-              name="rating"
-            />
+            <input onClick={handleInputChange} type="radio" id="rating-5" name="rating" />
             <label htmlFor="rating-5">5</label>
-
             <input
-              onClick={handleInputChange}
-              type="radio"
-              id="rating-4"
-              name="rating"
-            />
+              onClick={handleInputChange} type="radio" id="rating-4" name="rating"/>
             <label htmlFor="rating-4">4</label>
-
-            <input
-              onClick={handleInputChange}
-              type="radio"
-              id="rating-3"
-              name="rating"
-            />
+            <input onClick={handleInputChange} type="radio" id="rating-3" name="rating"/>
             <label htmlFor="rating-3">3</label>
-
-            <input
-              onClick={handleInputChange}
-              type="radio"
-              id="rating-2"
-              name="rating"
-            />
+            <input onClick={handleInputChange} type="radio" id="rating-2" name="rating" />
             <label htmlFor="rating-2">2</label>
-
-            <input
-              onClick={handleInputChange}
-              type="radio"
-              id="rating-1"
-              name="rating"
-            />
+            <input onClick={handleInputChange} type="radio" id="rating-1" name="rating" />
             <label htmlFor="rating-1">1</label>
-
-            <input
-              type="radio"
-              id="default"
-              name="rating"
-              className="star-empty"
-            />
+            <input type="radio" id="default" name="rating" className="star-empty" />
             <label htmlFor="default-state">empty</label>
           </span>
         </section>
@@ -165,5 +116,4 @@ const RatingsFilter = () => {
     </>
   );
 };
-
 export default RatingsFilter;
